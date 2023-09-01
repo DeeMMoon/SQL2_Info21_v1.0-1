@@ -1,54 +1,17 @@
-# Info21 v1.0
-
-Data analysis and statistics for School 21.
-
+## Result
+![Result](./misc/images/Result.png)
 
 ## Contents
 
 1. [Chapter I](#chapter-i) \
-    1.1. [Introduction](#introduction)
+    1.1. [Logical view of database model](#logical-view-of-database-model)
 2. [Chapter II](#chapter-ii) \
-    2.1. [General rules](#general-rules) \
-    2.2. [Logical view of database model](#logical-view-of-database-model)
-3. [Chapter III](#chapter-iii) \
-   3.1. [Part 1. Database creation](#part-1-creating-a-database)  
-   3.2. [Part 2. Changing data](#part-2-changing-data)  
-   3.3. [Part 3. Getting data](#part-3-getting-data)  
-   3.4. [Bonus. Part 4. Metadata](#bonus-part-4-metadata)
-
-## Chapter I
-
-![Info21 v1.0](misc/images/SQL2_Info21_v1.0.jpg)
-
-Chuck decided to work from home. Next to him on the table was a warm, freshly brewed cup of coffee with a thin stream of steam rising over it. Both monitors had the OS boot screen on and a few moments later the welcome screen popped up. Chuck lazily reached for his mouse. He clicked it and got to the directory with the work files. Although he works in the finance department, today he had a completely different task: to help implement another idea that came from above, since he is one of those few employees who are somehow familiar with SQL. \
-Structured Query Language, or as its creators once claimed - a language in which "every housewife would be able to write a database query". But the housewives Chuck knew from the office couldn't cope with it, so he was usually the one who had the honor of handling database-related tasks. His past experience as a programmer helped. After all, he had spent four years at the university for a reason.
- 
-`-` "First, I should create the database," Chuck thought to himself. - "Entities with parameters were already written down somewhere, all that is left is to figure out relations. A third normal form would definitely do it." \
-Chuck reached for the paper, but out of the corner of his eye he noticed the printed financial statements for the past period resting on a table. \
-`-` "I’ll deal with them later, this first. And remembering SQL on such an easy task wouldn't be a waste of time." \
-After sipping his coffee first, he finally got to the paper. \
-`-` "Okay, let's see what we can do here", Chuck began his musings.
-
-## Introduction
-
-In this project, you will have to put your knowledge of SQL into practice. 
-You will need to create a database with data about School 21 and write procedures and functions to retrieve information, as well as procedures and triggers to change it.
-
+   2.1. [Part 1. Database creation](#part-1-creating-a-database)  
+   2.2. [Part 2. Changing data](#part-2-changing-data)  
+   2.3. [Part 3. Getting data](#part-3-getting-data)  
+   2.4. [Bonus. Part 4. Metadata](#bonus-part-4-metadata)
 
 ## Chapter II
-
-## General Rules
-
-- Use this page as the only reference. Do not listen to any rumors and speculations on how to prepare your solution.
-- Please make sure you are using the latest version of PostgreSQL.
-- That is completely OK if you are using an IDE to write a source code (aka SQL script).
-- To be assessed your solution must be in your GIT repository.
-- Your solutions will be evaluated by your peers.
-- You should not leave any additional files in your directory other than sql scripts or csv files. It is recommended that you modify your `.gitignore` to avoid accidents.
-- Do you have a question? Ask your neighbor on the right. Otherwise, try with your neighbor on the left.
-- Your reference manual: peers / Internet / Google.
-- And may the SQL-Force be with you!
-- Absolutely everything can be presented in SQL! Let’s start and have fun!
 
 ## Logical view of database model
 
@@ -169,15 +132,15 @@ For example:
 
 | ID | Peer | Date   | Time | State |
 |---|------|--------|------|---|
-| 1 | Aboba | 22.03.22 | 13:37 | 1 |
-| 2 | Aboba | 22.03.22 | 15:48 | 2 |
-| 3 | Aboba | 22.03.22 | 16:02 | 1 |
-| 4 | Aboba | 22.03.22 | 20:00 | 2 |
+| 1 | A | 22.03.22 | 13:37 | 1 |
+| 2 | A | 22.03.22 | 15:48 | 2 |
+| 3 | A | 22.03.22 | 16:02 | 1 |
+| 4 | A | 22.03.22 | 20:00 | 2 |
 
 In this example, the only "out" is the record with an ID equal to 2. Peer with the nickname Aboba has been out of campus for 14 minutes.
 
 
-## Chapter III
+## Chapter II
 
 ## Part 1. Creating a database
 
@@ -230,22 +193,13 @@ Output example:
 
 | Peer1 | Peer2 | PointsAmount |
 |------|------|----|
-| Aboba | Amogus | 5  |
-| Amogus | Sus  | -2 |
-| Sus  | Aboba | 0  |
+| A | B | 5  |
+| B | C  | -2 |
+| C  | A | 0  |
 
 ##### 2) Write a function that returns a table of the following form: user name, name of the checked task, number of XP received
 Include in the table only tasks that have successfully passed the check (according to the Checks table). \
 One task can be completed successfully several times. In this case, include all successful checks in the table.
-
-Output example:
-
-| Peer   | Task | XP  |
-|--------|------|-----|
-| Aboba  | C8   | 800 |
-| Aboba  | CPP3 | 750 |
-| Amogus | DO5  | 175 |
-| Sus    | A4   | 325 |
 
 ##### 3) Write a function that finds the peers who have not left campus for the whole day
 Function parameters: day, for example 12.05.2022. \
@@ -255,57 +209,22 @@ The function returns only a list of peers.
 Output the result sorted by the change in the number of points. \
 Output format: peer's nickname, change in the number of peer points
 
-Output example:
-| Peer   | PointsChange |
-|--------|--------------|
-| Aboba  | 8            |
-| Amogus | 1            |
-| Sus    | -3           |
-
 ##### 5) Calculate the change in the number of peer points of each peer using the table returned by [the first function from Part 3](#1-write-a-function-that-returns-the-transferredpoints-table-in-a-more-human-readable-form)
 Output the result sorted by the change in the number of points. \
 Output format: peer's nickname, change in the number of peer points
 
-Output example:
-| Peer   | PointsChange |
-|--------|--------------|
-| Aboba  | 8            |
-| Amogus | 1            |
-| Sus    | -3           |
-
 ##### 6) Find the most frequently checked task for each day
 If there is the same number of checks for some tasks in a certain day, output all of them. \
 Output format: day, task name
-
-Output example:
-| Day        | Task |
-|------------|------|
-| 12.05.2022 | A1   |
-| 17.04.2022 | CPP3 |
-| 23.12.2021 | C5   |
 
 ##### 7) Find all peers who have completed the whole given block of tasks and the completion date of the last task
 Procedure parameters: name of the block, for example “CPP”. \
 The result is sorted by the date of completion. \
 Output format: peer's name, date of completion of the block (i.e. the last completed task from that block)
 
-Output example:
-| Peer   | Day        |
-|--------|------------|
-| Sus    | 23.06.2022 |
-| Amogus | 17.05.2022 |
-| Aboba  | 12.05.2022 |
-
 ##### 8) Determine which peer each student should go to for a check.
 You should determine it according to the recommendations of the peer's friends, i.e. you need to find the peer with the greatest number of friends who recommend to be checked by him. \
 Output format: peer's nickname, nickname of the checker found
-
-Output example:
-| Peer   | RecommendedPeer  |
-|--------|-----------------|
-| Aboba  | Sus             |
-| Amogus | Aboba           |
-| Sus    | Aboba           |
 
 ##### 9) Determine the percentage of peers who:
 - Started only block 1
@@ -318,19 +237,9 @@ A peer is considered to have started a block if he has at least one check of any
 Procedure parameters: name of block 1, for example SQL, name of block 2, for example A. \
 Output format: percentage of those who started only the first block, percentage of those who started only the second block, percentage of those who started both blocks, percentage of those who did not started any of them
 
-Output example:
-| StartedBlock1 | StartedBlock2 | StartedBothBlocks | DidntStartAnyBlock |
-|---------------|---------------|-------------------|--------------------|
-| 20            | 20            | 5                 | 55                 |
-
 ##### 10) Determine the percentage of peers who have ever successfully passed a check on their birthday
 Also determine the percentage of peers who have ever failed a check on their birthday. \
 Output format: percentage  of peers who have ever successfully passed a check on their birthday, percentage of peers who have ever failed a check on their birthday
-
-Output example:
-| SuccessfulChecks | UnsuccessfulChecks |
-|------------------|--------------------|
-| 60               | 40                 |
 
 ##### 11) Determine all peers who did the given tasks 1 and 2, but did not do task 3
 Procedure parameters: names of tasks 1, 2 and 3. \
@@ -339,13 +248,6 @@ Output format: list of peers
 ##### 12) Using recursive common table expression, output the number of preceding tasks for each task
 I. e. How many tasks have to be done, based on entry conditions, to get access to the current one. \
 Output format: task name, number of preceding tasks
-
-Output example:
-| Task | PrevCount |
-|------|-----------|
-| CPP3 | 7         |
-| A1   | 9         |
-| C5   | 1         |
 
 ##### 13) Find "lucky" days for checks. A day is considered "lucky" if it has at least *N* consecutive successful checks
 Parameters of the procedure: the *N* number of consecutive successful checks . \
@@ -356,11 +258,6 @@ Output format: list of days
 
 ##### 14) Find the peer with the highest amount of XP
 Output format: peer's nickname, amount of XP
-
-Output example:
-| Peer   | XP    |
-|--------|-------|
-| Amogus | 15000 |
 
 ##### 15) Determine the peers that came before the given time at least *N* times during the whole time
 Procedure parameters: time, *N* number of times . \
@@ -376,14 +273,6 @@ For each month, count the number of times people born in that month have come to
 For each month, count the percentage of early entries to campus relative to the total number of entries. \
 Output format: month, percentage of early entries
 
-Output example:
-
-| Month    | EarlyEntries |
-|----------|--------------|
-| January  | 15           |
-| February | 35           |
-| March    | 45           |
-
 ## Bonus. Part 4. Metadata
 
 For this part of the task, you need to create a separate database, in which to create the tables, functions, procedures, and triggers needed to test the procedures.
@@ -397,5 +286,3 @@ Add the creation and filling of this database, as well as the written procedures
 ##### 3) Create a stored procedure with output parameter, which destroys all SQL DML triggers in the current database. The output parameter returns the number of destroyed triggers.
 
 ##### 4) Create a stored procedure with an input parameter that outputs names and descriptions of object types (only stored procedures and scalar functions) that have a string specified by the procedure parameter.
-
-💡 [Tap here](https://forms.yandex.ru/cloud/64182088eb61462532cee6b5/) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.
