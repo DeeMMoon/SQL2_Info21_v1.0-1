@@ -11,7 +11,7 @@
    2.3. [Part 3. Getting data](#part-3-getting-data)  
    2.4. [Bonus. Part 4. Metadata](#bonus-part-4-metadata)
 
-## Chapter II
+## Chapter I
 
 ## Logical view of database model
 
